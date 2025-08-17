@@ -20,19 +20,40 @@ async function getQuote() {
     authorText.textContent = `— ${data.author}`;
     categoryTag.textContent = `Category: ${category}`;
   } catch (error) {
-    const fallbackQuotes = [
-      { text: "Talk is cheap. Show me the code.", author: "Linus Torvalds", tag: "technology" },
-      { text: "Programs must be written for people to read.", author: "Harold Abelson", tag: "wisdom" },
-      { text: "First, solve the problem. Then, write the code.", author: "John Johnson", tag: "inspirational" },
-      { text: "Code is like humor. When you have to explain it, it’s bad.", author: "Cory House", tag: "life" }
-    ];
-    const randomIndex = Math.floor(Math.random() * fallbackQuotes.length);
-    const quote = fallbackQuotes[randomIndex];
-    quoteText.textContent = `"${quote.text}"`;
-    authorText.textContent = `— ${quote.author}`;
-    categoryTag.textContent = `Category: ${quote.tag}`;
-  }
+const fallbackQuotes = {
+  Technology: [
+    { content: "Programs must be written for people to read.", author: "Harold Abelson" },
+    { content: "Talk is cheap. Show me the code.", author: "Linus Torvalds" },
+    { content: "Any sufficiently advanced technology is indistinguishable from magic.", author: "Arthur C. Clarke" },
+    { content: "First, solve the problem. Then, write the code.", author: "John Johnson" },
+  ],
+  Motivation: [
+    { content: "The best way to get started is to quit talking and begin doing.", author: "Walt Disney" },
+    { content: "Success is not final, failure is not fatal: It is the courage to continue that counts.", author: "Winston Churchill" },
+    { content: "Don’t let yesterday take up too much of today.", author: "Will Rogers" },
+    { content: "Great things never come from comfort zones.", author: "Unknown" },
+  ],
+  Happiness: [
+    { content: "Happiness depends upon ourselves.", author: "Aristotle" },
+    { content: "Count your age by friends, not years.", author: "John Lennon" },
+    { content: "The purpose of our lives is to be happy.", author: "Dalai Lama" },
+    { content: "Happiness is not something readymade. It comes from your actions.", author: "Dalai Lama" },
+  ],
+  Life: [
+    { content: "In the middle of every difficulty lies opportunity.", author: "Albert Einstein" },
+    { content: "Life is what happens when you’re busy making other plans.", author: "John Lennon" },
+    { content: "Do not take life too seriously. You will never get out of it alive.", author: "Elbert Hubbard" },
+    { content: "Turn your wounds into wisdom.", author: "Oprah Winfrey" },
+  ]
+};
+
+// Fallback function
+function useFallbackQuote(category = "Motivation") {
+  const quotes = fallbackQuotes[category] || fallbackQuotes.Motivation;
+  const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+  displayQuote(randomQuote.content, randomQuote.author, category);
 }
+
 
 // Copy button logic
 copyQuoteBtn.addEventListener("click", () => {
@@ -53,3 +74,4 @@ copyQuoteBtn.addEventListener("click", () => {
 
 
 newQuoteBtn.addEventListener("click", getQuote);
+
