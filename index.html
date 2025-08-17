@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Random Quote Generator</h1>
+        <div id="quote-box">
+            <p id="quote">Click below to get a quote!</p>
+            <span id="author"></span>
+            <span id="category-tag"></span>
+        </div>
+        <select id="category">
+            <option value="random">🎲 Random</option>
+            <option value="inspirational">🌟 Inspirational</option>
+            <option value="life">🌱 Life</option>
+            <option value="technology">💻 Technology</option>
+            <option value="wisdom">📖 Wisdom</option>
+            <option value="friendship">🤝 Friendship</option>
+          </select>          
+
+        <button id="new-quote">New Quote</button>
+        <button id="copy-quote">Copy Quote</button>
+    </div>
+    <script src="script.js"></script>
+    <div id="toast">Quote copied! ✅</div>
+</body>
+
+</html>
