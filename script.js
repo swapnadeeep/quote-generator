@@ -98,7 +98,15 @@ function displayQuote(content, author, category) {
 // Use Fallback Quote
 // =============================
 function useFallbackQuote(category = "Inspirational") {
-  const quotes = fallbackQuotes[category] || fallbackQuotes.Inspirational;
+  let quotes;
+
+  if (category.toLowerCase() === "random") {
+    // merge all categories into one big array
+    quotes = Object.values(fallbackQuotes).flat();
+  } else {
+    quotes = fallbackQuotes[category] || fallbackQuotes.Inspirational;
+  }
+
   const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
   displayQuote(randomQuote.content, randomQuote.author, category);
 }
@@ -158,3 +166,4 @@ addButtonEvents(copyQuoteBtn, copyQuote);
 
 // On load
 fetchQuote();
+
