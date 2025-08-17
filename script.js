@@ -53,3 +53,5 @@ copyQuoteBtn.addEventListener("click", () => {
 
 
 newQuoteBtn.addEventListener("click", getQuote);
+newQuoteBtn.addEventListener("touchstart", getQuote); // for mobile
+
